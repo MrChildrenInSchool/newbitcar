@@ -1,5 +1,6 @@
 function runstraight (speed: number) {
-    BitCar.move(rightmortorpawer * speed, leftmortorpawer * speed)
+    let straightmaxspeed = 0
+    BitCar.move(Math.constrain(rightmortorpawer * speed, 0, straightmaxspeed), Math.constrain(leftmortorpawer * speed, 0, straightmaxspeed))
 }
 let msnow = 0
 let leftmortorpawer = 0
