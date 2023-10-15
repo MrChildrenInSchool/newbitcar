@@ -1,13 +1,22 @@
-function runstraight (speed: number) {
-    let straightmaxspeed = 0
-    BitCar.move(Math.constrain(rightmortorpawer * speed, 0, straightmaxspeed), Math.constrain(leftmortorpawer * speed, 0, straightmaxspeed))
+function comment (str:string){}
+function runsafely (speed: number) {
+    respeed = Math.constrain(speed, 0, maxspeed)
+    if(BitCar.linesensor(IRLineSensor.left)&&BitCar.linesensor(IRLineSensor.right)){
+        comment("右も左にも反応しているため、直進")
+        runstraghtsafely()
+    }
+
 }
-let msnow = 0
-let leftmortorpawer = 0
-let rightmortorpawer = 0
-rightmortorpawer = 1
-leftmortorpawer = 1
-basic.forever(function () {
-    // ずっと稼働
-    msnow = control.millis()
-})
+function runstraight (speed: number) {
+    respeed = Math.constrain(speed, 0, maxspeed)
+    BitCar.move(respeed, respeed)
+}
+function runstraghtsafely () {
+    runstraight(5 + 5 * BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm))
+}
+function runstraightsafely_uselinefollow () {
+    runsafely(10 + 5 * BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm))
+}
+let respeed = 0
+let maxspeed = 0
+maxspeed = 1
