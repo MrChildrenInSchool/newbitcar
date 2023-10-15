@@ -7,7 +7,7 @@ function runsafely (speed: number) {
     } else if (left) {
         move(Math.constrain(5 * BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, maxspeedturning * leftpawer), Math.constrain(BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, 3))
     } else if (right) {
-        move(Math.constrain(BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, 3), 5 * Math.constrain(BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, 10))
+        move(Math.constrain(BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, 3), 5 * Math.constrain(BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm), 0, maxspeedturning * rightpawer))
     } else {
         runstraghtsafely()
     }
