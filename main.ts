@@ -1,7 +1,10 @@
+// あとは色やれたら完成かな
+// あ、避けるのも必要だった。。
 function runsafely (speed: number) {
     respeed = Math.constrain(speed, 0, maxspeed)
     left = BitCar.linesensor(IRLineSensor.left)
     right = BitCar.linesensor(IRLineSensor.right)
+    // ウインカー
     if (left && right) {
         runstraghtsafely()
     } else if (left) {
@@ -22,11 +25,11 @@ function runstraghtsafely () {
 function runstraightsafely_uselinefollow () {
     runsafely(5 * BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm))
 }
-function comment (str: string) {
-	
-}
 function move (leftspeed: number, rightspeed: number) {
     BitCar.move(leftpawer * leftspeed, rightpawer * rightspeed)
+}
+function main () {
+    runsafely(1)
 }
 let right = false
 let left = false
@@ -39,3 +42,6 @@ maxspeedturning = 1
 rightpawer = 1
 leftpawer = 1
 maxspeed = 1
+basic.forever(function () {
+    main()
+})
