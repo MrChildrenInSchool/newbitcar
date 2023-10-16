@@ -30,19 +30,20 @@ function runstraight(speed: number) {
 // あとは色やれたら完成かな
 // あ、避けるのも必要だった。。
 function avoid(direction: string) {
-    comment("途中です。。")
+    comment("これ、よけれるのか？")
     distance = BitCar.grove_ultrasonic_v2(GrovePin.P12, DistanceUnit.cm)
     if (direction == "right") {
-            move(10,5)
-            runstraghtsafely()
-            move(5,10)
-            runstraghtsafely()
-        for(let i = 0;;){}
-
+        move(10, 5)
+        runstraight(5 * distance)
+        move(5, 10)
+        runstraight(5 * distance)
     } else if (direction == "left") {
-
+        move(5, 10)
+        runstraight(5 * distance)
+        move(10, 5)
+        runstraight(5 * distance)
     } else {
-        comment("エラー処理")
+        error("")
     }
 }
 function runstraghtsafely() {
